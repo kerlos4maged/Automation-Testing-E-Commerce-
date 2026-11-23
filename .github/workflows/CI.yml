@@ -27,10 +27,19 @@ jobs:
         run: npx playwright test
         env:
           CI: true
-          Base_URL: ${{ secrets.Base_URL }}
-          # ضيف باقي متغيرات الـ .env هنا بنفس الطريقة، مثلاً:
-          # USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          # USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          Base_URL: ${{ vars.Base_URL || secrets.Base_URL }}
+          Email: ${{ vars.Email || secrets.Email }}
+          PASSWORD: ${{ vars.PASSWORD ||secrets.PASSWORD }}
+          Invalid_EMAIL: ${{ vars.Invalid_EMAIL ||secrets.Invalid_EMAIL }}
+          Invalid_PASSWORD: ${{ vars.Invalid_PASSWORD ||secrets.Invalid_PASSWORD }}
+          CARD_NAME: ${{ vars.CARD_NAME ||secrets.CARD_NAME }}
+          CARD_NUMBER: ${{ vars.CARD_NUMBER ||secrets.CARD_NUMBER }}
+          CARD_CVC: ${{ vars.CARD_CVC ||secrets.CARD_CVC }}
+          CARD_EXPIRYMONTH: ${{ vars.CARD_EXPIRYMONTH || secrets.CARD_EXPIRYMONTH }}
+          CARD_EXPIRYYEAR: ${{ vars.CARD_EXPIRYYEAR || secrets.CARD_EXPIRYYEAR }}
+
+
+
 
       - name: Generate Allure report
         if: ${{ !cancelled() }}
