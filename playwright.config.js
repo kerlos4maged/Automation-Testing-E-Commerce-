@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-import os from 'node:os';
+const os = require('os');
 require("dotenv").config();
 
 
@@ -27,19 +27,20 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 3 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['list'],
-    ['allure-playwright', {
-      resultsDirectory: 'allure-results',
-      detail: true,
-      suppressReportDataWarnings: true,
-      environmentInfo: {
-        OS: os.platform(),
-        Node: process.version,
-        BaseURL: 'https://automationexercise.com',
-      },
-    }],
-  ],
+ reporter: [
+  ['html', { open: 'never' }],
+  ['list'],
+  ['allure-playwright', {
+    resultsDirectory: 'allure-results',
+    detail: true,
+    suppressReportDataWarnings: true,
+    environmentInfo: {
+      OS: os.platform(),
+      Node: process.version,
+      BaseURL: process.env.Base_URL,
+    },
+  }],
+],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
   expect: { timeout: 10_000 },
