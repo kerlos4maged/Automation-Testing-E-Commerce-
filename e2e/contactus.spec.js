@@ -1,5 +1,5 @@
 
-import { expect, test } from "@playwright/test";
+const { test, expect } = require('../fixture');
 import { ContactUs } from "../pages/contactusPage";
 import { ContactUsData } from "../test-data/contactusData";
 

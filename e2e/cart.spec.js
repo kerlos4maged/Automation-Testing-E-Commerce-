@@ -1,5 +1,4 @@
-// @ts-check
-import { expect, test } from '@playwright/test';
+const { test, expect } = require('../fixture');
 import { CartPage } from '../pages/cartPage';
 import { SearchPage } from '../pages/searchPage';
 import { Login } from '../pages/loginPage'

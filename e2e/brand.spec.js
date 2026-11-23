@@ -1,5 +1,4 @@
-// @ts-check
-import { expect, test } from '@playwright/test';
+const { test, expect } = require('../fixture');
 import { BrandPage } from '../pages/brandPage';
 
 test.describe('Brand Functionality', () => {

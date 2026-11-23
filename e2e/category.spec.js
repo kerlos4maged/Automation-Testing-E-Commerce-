@@ -1,5 +1,5 @@
-// @ts-check
-import { expect, test } from '@playwright/test';
+
+const { test, expect } = require('../fixture');
 import { CategoryPage } from '../pages/categoryPage';
 
 test.describe('Category Functionality', () => {

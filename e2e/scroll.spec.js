@@ -1,5 +1,4 @@
-// @ts-check
-import { expect, test } from '@playwright/test';
+const { test, expect } = require('../fixture');
 import { ScrollPage } from '../pages/scrollPage';
 
 test.describe('Scroll Functionality', () => {
